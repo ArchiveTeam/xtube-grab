@@ -120,7 +120,8 @@ allowed = function(url, parenturl)
 
   for newurl in string.gmatch(url, "([^;]+)") do
     local type_, value = get_item(newurl)
-    if value and type_ == "s" or type_ == "cdn" then
+    if value and (type_ == "s" or type_ == "cdn")
+      and not (type_ == item_type and value == item_value) then
       local new_item = type_ .. ":" .. value
       if not discovered[new_item] then
         discovered[new_item] = true
@@ -138,7 +139,7 @@ allowed = function(url, parenturl)
   end
 
   if item_type == "s" then
-    local match = string.match("/search/video/([/%?&]+)")
+    local match = string.match(url, "/search/[^/]+/([^/%?&]+)")
     if match and ids[match] then
       return true
     end
