@@ -54,7 +54,7 @@ if not WGET_AT:
 #
 # Update this each time you make a non-cosmetic change.
 # It will be added to the WARC files and reported to the tracker.
-VERSION = '20210823.01'
+VERSION = '20210830.01'
 USER_AGENT = 'Archive Team'
 TRACKER_ID = 'xtube'
 TRACKER_HOST = 'legacy-api.arpa.li'
@@ -91,8 +91,8 @@ class CheckIP(SimpleTask):
 
             response = requests.get('https://www.xtube.com/', allow_redirects=False)
             assert response.status_code == 200
-            assert b'/video/gay-group-sex/mrc' in response.content
-            assert b'Gay Group Sex' in response.content
+            assert b'/amateur/profiles/hot' in response.content
+            assert b'Popular Amateurs' in response.content
             assert b'Xtube is the home of gay porn&nbsp;with the biggest collection of FREE PORN videos!' in response.content
             assert b'/video-watch/' in response.content
             assert b'/video/trt-week' in response.content
